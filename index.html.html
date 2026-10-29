@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Y2K 剪刀石頭布終極大對決</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Noto+Sans+TC:wght@700;900&display=swap" rel="stylesheet">
+    <style>
+        /* Y2K & Maximalism 自訂樣式 - 薄荷綠極繁主義 (無動畫版) */
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            background-image: url('Mint green and dark brown polka dots.jpg');
+            background-repeat: repeat;
+            overflow: hidden; /* 防止滾動，強制緊湊 */
+            color: #000;
+        }
+
+        /* 緊密網格背景 */
+        .grid-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background-image: 
+                linear-gradient(rgba(0, 255, 255, 0.5) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 20, 147, 0.5) 1px, transparent 1px);
+            background-size: 15px 15px;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* 重金屬 (Heavy Chrome) 文字特效 */
+        .chrome-text {
+            background: linear-gradient(to bottom, #ffffff 0%, #a0a0a0 40%, #303030 50%, #d0d0d0 60%, #ffffff 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            -webkit-text-stroke: 2px #000;
+            filter: drop-shadow(4px 4px 0px #FF1493) drop-shadow(-3px -3px 0px #0000FF);
+            font-family: 'Press Start 2P', 'Noto Sans TC', cursive;
+            text-transform: uppercase;
+            font-weight: 900;
+        }
+
+        /* 水晶金屬按鈕 (Crystal Chrome Box) */
+        .chrome-box {
+            background: linear-gradient(135deg, #ffffff 0%, #b0b0b0 40%, #00ffff 50%, #d0d0d0 60%, #ffffff 100%);
+            border: 4px solid #000;
+            border-radius: 4px; /* 緊湊方形 */
+            box-shadow: 
+                inset 2px 2px 10px rgba(255,255,255,0.9),
+                inset -4px -4px 10px rgba(0,0,0,0.6),
+                4px 4px 0px #FF4500,
+                -4px -4px 0px #FF1493;
+            color: #000;
+        }
+
+        /* 復古 Win95 視窗風格 (對應下載.jpg中的復古元素) */
+        .win95-window {
+            background-color: #c0c0c0;
+            border-top: 2px solid #fff;
+            border-left: 2px solid #fff;
+            border-right: 2px solid #0a0a0a;
+            border-bottom: 2px solid #0a0a0a;
+            box-shadow: 1px 1px 0 #dfdfdf inset, -1px -1px 0 #808080 inset;
+            padding: 2px;
+        }
+        
+        .win95-titlebar {
+            background: #000080;
+            color: white;
+            font-weight: bold;
+            padding: 2px 4px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* 粗獷霓虹邊框 */
+        .neon-border {
+            border: 6px solid #FF1493;
+            box-shadow: 4px 4px 0 #00FFFF, -4px -4px 0 #FF4500, inset 0 0 10px #FF1493;
+            background: rgba(0, 0, 0, 0.85);
+        }
+
+        /* 對戰紀錄緊湊文字 */
+        .log-text {
+            font-family: 'Press Start 2P', monospace;
+            text-shadow: 1px 1px 0px #000;
+            line-height: 1.1;
+            margin-bottom: 2px;
+            font-size: 0.75rem;
+        }
+
+        /* 覆蓋隱藏用的類別，確保使用 flex */
+        .hidden { display: none !important; }
+    </style>
+</head>
+<body class="h-screen w-screen flex flex-col items-center justify-center p-1 relative text-sm">
+
+    <div class="grid-overlay"></div>
+
+    <!-- 復古裝飾圖片疊加 (引用 下載.jpg) -->
+    <img src="下載.jpg" class="fixed top-0 left-0 w-48 md:w-64 h-auto z-0 opacity-90 pointer-events-none mix-blend-darken" alt="decor">
+    <img src="下載.jpg" class="fixed bottom-0 right-0 w-48 md:w-64 h-auto z-0 opacity-90 pointer-events-none mix-blend-darken scale-x-[-1] scale-y-[-1]" alt="decor">
+
+    <!-- 背景視覺轟炸裝飾 (靜態無動畫) -->
+    <div class="fixed top-12 left-1/4 text-4xl z-0">💾</div>
+    <div class="fixed bottom-12 right-1/4 text-5xl z-0">🌍</div>
+    <div class="fixed top-1/3 right-4 text-4xl z-0">💿</div>
+    <div class="fixed bottom-1/3 left-4 text-6xl z-0">📱</div>
+
+    <!-- 多層次靜態裝飾條 (取代跑馬燈) -->
+    <div class="fixed top-0 w-full bg-[#FF1493] border-b-4 border-black z-40 transform -skew-y-1 overflow-hidden flex">
+        <div class="text-lg font-black text-[#00FFFF] py-0.5 tracking-tighter whitespace-nowrap">
+            ⚡️ MAXIMUM ⚡️ COMPACT ⚡️ MINT GREEN OVERLOAD ⚡️ Y2K EXTREME ⚡️ ✊✋✌️ 終極大對決 ⚡️ MAXIMUM ⚡️ COMPACT ⚡️ MINT GREEN OVERLOAD ⚡️
+        </div>
+    </div>
+    <div class="fixed bottom-0 w-full bg-[#00FFFF] border-t-4 border-[#FF4500] z-40 overflow-hidden flex justify-end">
+        <div class="text-sm font-bold text-black py-0.5 tracking-tight whitespace-nowrap">
+            💎 NO EMPTY SPACE 💎 MORE COLORS 💎 HIGHER SATURATION 💎 OVERLAPPING LAYERS 💎 NO EMPTY SPACE 💎 MORE COLORS 💎 HIGHER SATURATION 💎
+        </div>
+    </div>
+    <div class="fixed top-1/2 -left-10 w-[120vw] bg-[#FF4500]/90 transform rotate-45 z-0 pointer-events-none overflow-hidden flex justify-center">
+        <div class="text-3xl font-black text-black py-1 whitespace-nowrap">
+            WARNING!!! EXTREME MAXIMALISM WARNING!!! WARNING!!! EXTREME MAXIMALISM WARNING!!!
+        </div>
+    </div>
+
+    <!-- === 1. 登入介面 (極度緊湊) === -->
+    <div id="login-screen" class="win95-window w-full max-w-sm flex flex-col items-center justify-center z-10 mt-4 relative">
+        <div class="win95-titlebar w-full text-xs font-sans">
+            <span>Error_Prompt.exe</span>
+            <button class="bg-gray-300 text-black px-1 border border-black font-bold">X</button>
+        </div>
+        <div class="p-2 w-full flex flex-col gap-2 items-center bg-gray-200">
+            <h1 class="text-3xl md:text-4xl text-center chrome-text leading-none mb-1">
+                ✊✋✌️<br>大對決
+            </h1>
+            <div class="neon-border rounded p-3 w-full text-center flex flex-col gap-2 relative">
+                <div class="absolute -top-3 -right-3 bg-[#00FFFF] text-black text-xs font-black p-1 border-2 border-black transform rotate-12">NEW!</div>
+                <h2 class="text-lg font-black text-[#FF1493] drop-shadow-md bg-white/90 p-1">冒險者登入</h2>
+                <input type="text" id="player-name" placeholder="輸入名字..." 
+                    class="w-full text-center text-lg p-1 bg-blue-900 border-4 border-[#00FFFF] text-white focus:outline-none focus:border-[#FF1493] font-bold">
+                <button onclick="goToEquip()" class="chrome-box w-full py-2 text-xl font-black uppercase">
+                    ENTER 🚀
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- === 2. 裝備選擇介面 (極度緊湊) === -->
+    <div id="equip-screen" class="win95-window w-full max-w-md hidden flex-col items-center justify-center z-10 mt-4">
+        <div class="win95-titlebar w-full text-xs font-sans">
+            <span>Select_Equipment.sys</span>
+            <button class="bg-gray-300 text-black px-1 border border-black font-bold">X</button>
+        </div>
+        <div class="p-2 w-full flex flex-col gap-2 bg-gray-200 items-center">
+            <h2 class="text-2xl text-center chrome-text bg-black/50 p-1 w-full">選擇裝備</h2>
+            <p class="text-xs font-bold text-center bg-[#FF1493] px-2 py-1 border-2 border-black uppercase text-white shadow-[2px_2px_0_#00FFFF]">
+                PLAYER: <span id="display-name" class="text-black bg-white px-1"></span>
+            </p>
+            
+            <div class="w-full grid grid-cols-3 gap-2">
+                <button onclick="startGame('銀手套', 0.2)" class="chrome-box p-1 flex flex-col items-center justify-center bg-gray-100">
+                    <span class="text-2xl">🤍</span>
+                    <span class="text-xs font-black bg-white/80 w-full mt-1 border-t-2 border-black">20% WIN</span>
+                </button>
+                <button onclick="startGame('金手套', 0.4)" class="chrome-box p-1 flex flex-col items-center justify-center bg-gray-100">
+                    <span class="text-2xl">💛</span>
+                    <span class="text-xs font-black bg-yellow-300 w-full mt-1 border-t-2 border-black">40% WIN</span>
+                </button>
+                <button onclick="startGame('鑽石手套', 0)" class="chrome-box p-1 flex flex-col items-center justify-center bg-gray-100">
+                    <span class="text-2xl">💎</span>
+                    <span class="text-[0.65rem] font-black bg-cyan-300 w-full mt-1 border-t-2 border-black leading-tight">1x 必勝</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- === 3. 遊戲對戰介面 (極度緊湊) === -->
+    <div id="battle-screen" class="win95-window w-full max-w-md hidden flex-col items-center z-10 mt-6">
+        <div class="win95-titlebar w-full text-xs font-sans">
+            <span>Battle_Arena.exe</span>
+            <button class="bg-gray-300 text-black px-1 border border-black font-bold">X</button>
+        </div>
+        <div class="p-2 w-full flex flex-col gap-2 bg-gray-200">
+            <!-- 緊湊記分板 -->
+            <div class="w-full flex justify-between items-stretch neon-border p-1 bg-black gap-1 shadow-[4px_4px_0_#FF4500]">
+                <div class="text-center w-1/3 bg-[#FF1493]/90 border-2 border-[#FF1493] p-1 flex flex-col justify-center">
+                    <div class="text-[#00FFFF] font-black text-xs truncate drop-shadow-md" id="battle-player-name">P1</div>
+                    <div class="text-3xl font-black chrome-text leading-none mt-1" id="player-score">0</div>
+                </div>
+                <div class="text-center w-1/3 flex flex-col justify-center items-center bg-[url('Mint\ green\ and\ dark\ brown\ polka\ dots.jpg')] bg-cover">
+                    <div class="text-[#FF4500] font-black text-[10px] bg-white px-1 border border-black transform -rotate-3">ROUND <span id="round-num">1</span></div>
+                    <div class="text-xl font-black text-white bg-black px-1 mt-1">VS</div>
+                    <div id="equip-status" class="text-[9px] text-black bg-[#00FFFF] px-1 mt-1 font-black whitespace-nowrap overflow-hidden text-ellipsis w-full"></div>
+                </div>
+                <div class="text-center w-1/3 bg-[#00FFFF]/90 border-2 border-[#00FFFF] p-1 flex flex-col justify-center">
+                    <div class="text-[#FF1493] font-black text-xs drop-shadow-md">CPU💻</div>
+                    <div class="text-3xl font-black chrome-text leading-none mt-1" id="computer-score">0</div>
+                </div>
+            </div>
+
+            <!-- 戰況文字紀錄區 (高度縮減) -->
+            <div class="w-full h-24 border-4 border-[#00FFFF] bg-[#000080] p-1 overflow-y-auto flex flex-col justify-end shadow-[inset_0_0_10px_#000]" id="battle-log">
+                <p class="text-[#00FFFF] log-text bg-black/50 inline-block px-1">✨ GO! 選擇你的出拳!</p>
+            </div>
+
+            <!-- 水晶出拳按鈕 (無間隙並排) -->
+            <div class="flex justify-between w-full gap-1">
+                <button onclick="playRound('剪刀')" class="chrome-box flex-1 py-1 text-3xl h-14 flex items-center justify-center bg-[#FF1493]">✌️</button>
+                <button onclick="playRound('石頭')" class="chrome-box flex-1 py-1 text-3xl h-14 flex items-center justify-center bg-[#00FFFF]">✊</button>
+                <button onclick="playRound('布')" class="chrome-box flex-1 py-1 text-3xl h-14 flex items-center justify-center bg-[#FF4500]">✋</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- === 4. 結算介面 (極度緊湊) === -->
+    <div id="result-screen" class="win95-window w-full max-w-sm hidden flex-col items-center justify-center z-10 mt-4 relative">
+        <div class="win95-titlebar w-full text-xs font-sans">
+            <span>Result.log</span>
+            <button class="bg-gray-300 text-black px-1 border border-black font-bold">X</button>
+        </div>
+        <div class="p-2 w-full flex flex-col gap-2 bg-gray-200 items-center">
+            <h1 class="text-4xl text-center chrome-text bg-black px-2 transform rotate-2" id="final-title">
+                OVER
+            </h1>
+            <div class="neon-border p-4 w-full text-center flex flex-col gap-3 relative bg-[url('Mint\ green\ and\ dark\ brown\ polka\ dots.jpg')] bg-cover">
+                <div id="final-message" class="text-lg font-black bg-black p-1 text-white"></div>
+                <div class="text-2xl text-[#00FFFF] font-black bg-[#FF1493] border-4 border-black inline-block p-1 transform -rotate-2" id="final-score"></div>
+                
+                <div class="flex gap-2">
+                    <button onclick="playAgain()" class="chrome-box flex-1 py-2 text-sm font-black uppercase bg-gray-100">
+                        AGAIN🔄
+                    </button>
+                    <button onclick="location.reload()" class="chrome-box flex-1 py-2 text-[10px] font-black uppercase bg-[#333] text-white">
+                        RE-EQUIP
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 遊戲狀態變數
+        let playerName = "";
+        let equipmentName = "";
+        let bonusChance = 0;
+        let playerWins = 0;
+        let computerWins = 0;
+        let roundNum = 1;
+        let diamondUsed = false;
+        const TARGET_WINS = 5;
+
+        // 規則對應表 (玩家出什麼，電腦出什麼會輸)
+        const winningHand = {
+            "剪刀": "布",
+            "石頭": "剪刀",
+            "布": "石頭"
+        };
+        const options = ["剪刀", "石頭", "布"];
+
+        // 取得介面元素
+        const screenLogin = document.getElementById('login-screen');
+        const screenEquip = document.getElementById('equip-screen');
+        const screenBattle = document.getElementById('battle-screen');
+        const screenResult = document.getElementById('result-screen');
+        const logBox = document.getElementById('battle-log');
+
+        // 寫入戰況紀錄 (移除動畫)
+        function addLog(msg, colorClass = "text-white") {
+            const p = document.createElement('p');
+            p.className = `log-text ${colorClass} mb-2 text-xs md:text-sm`;
+            p.innerText = msg;
+            logBox.appendChild(p);
+            logBox.scrollTop = logBox.scrollHeight;
+        }
+
+        // 1. 登入 -> 裝備選擇
+        function goToEquip() {
+            const input = document.getElementById('player-name').value.trim();
+            if(!input) {
+                playerName = "無名冒險者";
+            } else {
+                playerName = input;
+            }
+            document.getElementById('display-name').innerText = playerName;
+            document.getElementById('battle-player-name').innerText = playerName;
+            
+            screenLogin.classList.add('hidden');
+            screenEquip.classList.remove('hidden');
+        }
+
+        // 2. 選擇裝備 -> 開始遊戲
+        function startGame(equip, chance) {
+            equipmentName = equip;
+            bonusChance = chance;
+            
+            document.getElementById('equip-status').innerText = `裝備: ${equip}`;
+            
+            screenEquip.classList.add('hidden');
+            screenBattle.classList.remove('hidden');
+            
+            resetStats();
+        }
+
+        // 重置局數與分數
+        function resetStats() {
+            playerWins = 0;
+            computerWins = 0;
+            roundNum = 1;
+            diamondUsed = false;
+            
+            updateScoreboard();
+            logBox.innerHTML = '';
+            addLog(`=== 歡迎來到終極大對決 ===`, 'text-fuchsia-400');
+            addLog(`你已裝備【${equipmentName}】！先得 5 分者獲勝！`, 'text-cyan-300');
+        }
+
+        // 更新記分板 UI
+        function updateScoreboard() {
+            document.getElementById('player-score').innerText = playerWins;
+            document.getElementById('computer-score').innerText = computerWins;
+            document.getElementById('round-num').innerText = roundNum;
+        }
+
+        // 3. 進行一回合猜拳
+        function playRound(playerChoice) {
+            if(playerWins >= TARGET_WINS || computerWins >= TARGET_WINS) return;
+
+            addLog(`--- 第 ${roundNum} 回合 ---`, 'text-gray-400');
+            addLog(`你出了：${playerChoice}`, 'text-blue-300');
+
+            let computerChoice = "";
+
+            // 判斷裝備效果
+            if (equipmentName === "鑽石手套" && !diamondUsed) {
+                // 鑽石手套必勝
+                computerChoice = winningHand[playerChoice];
+                diamondUsed = true;
+                addLog("💎 鑽石手套發動！本回合必勝！", "text-fuchsia-400 font-bold");
+                
+            } else {
+                // 銀/金手套機率效果
+                if (Math.random() < bonusChance) {
+                    computerChoice = winningHand[playerChoice];
+                    addLog("✨ 裝備效果觸發！強勢壓制！", "text-yellow-300 font-bold");
+                } else {
+                    // 正常隨機
+                    computerChoice = options[Math.floor(Math.random() * options.length)];
+                }
+            }
+
+            addLog(`電腦出了：${computerChoice}`, 'text-purple-300');
+
+            // 判斷勝負
+            if (playerChoice === computerChoice) {
+                addLog("平手！雙方都沒有得分。⚖️", "text-gray-300");
+            } else if (computerChoice === winningHand[playerChoice]) {
+                addLog("🎉 這回合你贏了！", "text-green-400 text-lg");
+                playerWins++;
+            } else {
+                addLog("💥 這回合電腦贏了！", "text-red-400 text-lg");
+                computerWins++;
+            }
+
+            roundNum++;
+            updateScoreboard();
+
+            // 檢查是否結束
+            if (playerWins === TARGET_WINS || computerWins === TARGET_WINS) {
+                setTimeout(showResult, 800); // 稍微延遲讓玩家看到最後一筆紀錄
+            }
+        }
+
+        // 4. 顯示結算
+        function showResult() {
+            screenBattle.classList.add('hidden');
+            screenResult.classList.remove('hidden');
+
+            const title = document.getElementById('final-title');
+            const msg = document.getElementById('final-message');
+            const score = document.getElementById('final-score');
+
+            score.innerText = `比分 - ${playerWins} : ${computerWins}`;
+
+            if (playerWins === TARGET_WINS) {
+                title.innerText = "YOU WIN!";
+                msg.innerHTML = `🏆 恭喜 <b>${playerName}</b>！<br>你成功擊敗了電腦！`;
+                msg.className = "text-2xl font-black text-green-400 leading-relaxed";
+            } else {
+                title.innerText = "YOU LOSE";
+                msg.innerHTML = `💀 電腦獲得了最終勝利！<br>別灰心，下次再來！`;
+                msg.className = "text-2xl font-black text-red-500 leading-relaxed";
+            }
+        }
+
+        // 5. 再玩一局
+        function playAgain() {
+            screenResult.classList.add('hidden');
+            screenBattle.classList.remove('hidden');
+            resetStats();
+        }
+    </script>
+</body>
+</html>
